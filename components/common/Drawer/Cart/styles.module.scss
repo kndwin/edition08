@@ -1,0 +1,77 @@
+.drawerOverlay {
+  position: fixed;
+  z-index: 100;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background: rgba(0, 0, 0, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+
+  .drawer {
+    background: white;
+    padding: 1em;
+    height: calc(100% - 2em);
+    width: 20em;
+    margin: 1em;
+  }
+}
+
+.cart {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  padding: 1em;
+  .titleWrapper {
+    h3 {
+      margin: 0;
+    }
+    .close {
+      cursor: pointer;
+    }
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: fit-content;
+  }
+
+  .content {
+    padding-top: 2em;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    .itemWrapper {
+      height: 100%;
+      display: flex;
+      align-items: center;
+
+      .description {
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        height: 100%;
+
+        .title {
+          margin: 0;
+        }
+
+				.priceAndQuantity {
+					.quantity {
+						width: 3em;
+					}
+					display: flex;
+					align-items: center;
+				}
+      }
+      .image {
+        height: 6em;
+        margin-right: 2em;
+      }
+    }
+  }
+}

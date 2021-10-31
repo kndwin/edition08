@@ -1,0 +1,17 @@
+.gridWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+	width: 100%;
+	height: calc(100vh - 8em); 
+  .grid {
+		width: 100%; 
+    display: grid;
+    grid-template-columns: 1fr 50%;
+		place-items: center; 
+		.row {
+			margin: .5em 0; 
+			display: flex;
+		}
+  }
+}

@@ -1,0 +1,30 @@
+.articlesWrapper {
+	margin: 0 auto;
+	width: 100%;
+	max-width: 30em;
+
+	.link,
+	.article {
+		cursor: pointer; 
+	}
+
+	.link {
+		font-weight: bold; 
+	}
+
+
+	.image {
+		width: 100%;
+		height: 30em; 
+		object-fit: scale-down;
+	}
+
+}
+
+.articleWrapper {
+	.image {
+		width: 100%;
+		height: 30em; 
+		object-fit: cover;
+	}
+}

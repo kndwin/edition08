@@ -1,0 +1,30 @@
+.wrapper {
+  .group {
+    display: flex;
+
+    .number {
+      padding: 0.5em;
+			width: 5em;
+    }
+
+    .buttonGroup {
+      display: flex;
+      flex-direction: column;
+			.buttonDown,
+			.buttonUp {
+				border: none;
+				background-color: transparent; 
+				position: relative;
+				right: 100%; 
+				padding: 0 .3em; 
+				font-size: 1em; 
+			}
+			.buttonUp {
+				top: 3px;
+			}
+			.buttonDown {
+				bottom: 3px; 
+			}
+    }
+  }
+}
