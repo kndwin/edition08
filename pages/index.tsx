@@ -1,14 +1,13 @@
 import type { NextPage } from "next";
 
-import styles from "./index.module.scss";
 import { Layout } from "components";
+import { LandingPage, ImageGrid } from "components/pages/Index";
 
 const Home: NextPage = () => {
   return (
     <Layout>
-      <div className={styles.container}>
-        <h1>Hello world!</h1>
-      </div>
+			<LandingPage />
+			<ImageGrid />
     </Layout>
   );
 };

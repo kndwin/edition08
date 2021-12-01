@@ -13,19 +13,15 @@ query GetCartId {
 export const GET_CART_FROM_ID = gql`
 query GetCartFromId($cartId: ID!) {
 	cart(id: $cartId) {
+		checkoutUrl
 		id
 		createdAt
 		updatedAt
 		lines(first: ${MAX_CART_ITEM}) {
 			edges {
 				node {
+					id
 					quantity
-					estimatedCost {
-						subtotalAmount {
-							amount
-							currencyCode
-						}
-					}
 					merchandise {
 						... on ProductVariant {
 							id
@@ -37,6 +33,12 @@ query GetCartFromId($cartId: ID!) {
 								amount
 								currencyCode
 							}
+						}
+					}
+					estimatedCost {
+						subtotalAmount {
+							amount
+							currencyCode
 						}
 					}
 				}

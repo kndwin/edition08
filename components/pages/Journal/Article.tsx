@@ -1,6 +1,12 @@
+import type { ArticleProp } from "types";
+
 import styles from "./styles.module.scss";
 
-export const Article = ({ article }: any) => {
+export interface ArticleProps {
+  article: ArticleProp;
+}
+
+export const Article = ({ article }: ArticleProps) => {
   const { title, content, image } = article;
 
   return (

@@ -21,6 +21,7 @@ const ProductIdPage: NextPage = ({ product }: any) => {
 			value: product?.title
 		})
   };
+
   return (
     <Layout>
       <div className={styles.gridWrapper}>

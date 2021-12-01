@@ -1234,6 +1234,11 @@
   resolved "https://registry.yarnpkg.com/@types/scheduler/-/scheduler-0.16.2.tgz#1a62f89525723dde24ba1b01b092bf5df8ad4d39"
   integrity sha512-hppQEBDmlwhFAXKJX2KnWLYu5yMfi91yazPb2l+lbJiwW+wdo1gNeRA+3RgNSO39WYX2euey41KEwnqesU2Jew==
 
+"@types/shopify-buy@^2.10.8":
+  version "2.10.8"
+  resolved "https://registry.yarnpkg.com/@types/shopify-buy/-/shopify-buy-2.10.8.tgz#aacb08d81d34b0027c7e28641ce758a72d6f989c"
+  integrity sha512-yq/p6Al4CahEUqNN21nt3ttDNAtiD2Bg9f67mxEy09KZP3LrdbIIA8Smdn6HQWHMWZ8E7DnLvAlplKQe0uefAg==
+
 "@types/superagent@*":
   version "4.1.13"
   resolved "https://registry.yarnpkg.com/@types/superagent/-/superagent-4.1.13.tgz#0aaa3f4ff9404b94932d1dcdfb7f3d39d23997a0"
@@ -3858,6 +3863,11 @@ shell-quote@1.7.2:
   version "1.7.2"
   resolved "https://registry.yarnpkg.com/shell-quote/-/shell-quote-1.7.2.tgz#67a7d02c76c9da24f99d20808fcaded0e0e04be2"
   integrity sha512-mRz/m/JVscCrkMyPqHc/bczi3OQHkLTqXHEFu0zDhK/qfv3UcOA4SVmRCLmos4bhjr9ekVQubj/R7waKapmiQg==
+
+shopify-buy@^2.13.0:
+  version "2.13.0"
+  resolved "https://registry.yarnpkg.com/shopify-buy/-/shopify-buy-2.13.0.tgz#2f066752bd9614a92faceeb5a3f870c75f88bb32"
+  integrity sha512-MueiBWvQIzpCFTp+wRQF5O1N8J9a5y88mBbhLw7x4L8x1UhiMYbjPPC02jGpHml3Lm5eu11yNZYA5TsmUDJc7A==
 
 side-channel@^1.0.4:
   version "1.0.4"

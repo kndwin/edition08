@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import { useRef } from "react";
 import { useButton } from "react-aria";
 
 import styles from "./styles.module.scss";

@@ -1,4 +1,6 @@
 export type CartItem = {
+	merchandiseId: string,
+	productVariantId: string
 	image: string
 	title: string
 	price: string
@@ -8,4 +10,5 @@ export type CartItem = {
 export type Cart = {
 	items: CartItem[]
 	subtotal: string
+	checkoutUrl: string
 }

@@ -6,8 +6,8 @@ import { useCart } from "hooks/shopify";
 import { useCartDrawer } from "hooks";
 
 export const Header = () => {
-  const { cart } = useCart();
-  const { toggleCart, setIsOpen, openCart } = useCartDrawer();
+  const { cartLength } = useCart();
+  const { openCart } = useCartDrawer();
 
   return (
     <nav className={styles.header}>
@@ -35,9 +35,9 @@ export const Header = () => {
       <div className={styles.rightOfNav}>
         <p
           className={styles.cartLink}
-          onMouseDown={() =>  openCart() }
+          onMouseDown={() => openCart() }
         >
-          Shopping Bag ({cart?.items?.length})
+          Shopping Bag ({cartLength})
         </p>
       </div>
     </nav>

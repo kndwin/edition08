@@ -8,10 +8,11 @@ import { Layout } from "components";
 import { Article, Navigator } from "components/pages/Journal";
 
 const ArticleIdPage: NextPage = ({ article }: any) => {
+
   return (
     <Layout>
       <div className={styles.journalWrapper}>
-        <Navigator />
+				<Navigator />
         <Article article={article} />
       </div>
     </Layout>

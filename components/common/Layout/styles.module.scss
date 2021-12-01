@@ -2,7 +2,7 @@
 	display: flex;
 	flex-direction: column;
 	margin: 0 auto;
-	max-width: clamp(20em, 100%, 80em);
+	max-width: clamp(20em, 100%, 120em);
 	min-height: 100vh;
 	height: 100%;  
 	padding: 0 1em; 
@@ -16,6 +16,8 @@
 	width: 100%;
 	justify-content: space-between;
 	align-items: center;
+	font-family: Folio;
+	font-size: 14px;
 
 	.leftOfNav {
 		flex-grow: 1;
@@ -25,7 +27,7 @@
 		.links {
 			display: flex;
 			a {
-				margin-right: 1em; 
+				margin-right: 3em; 
 			}
 			margin-right: 1em; 
 		}
@@ -52,6 +54,8 @@
 }
 
 .footer {
+	font-family: Folio;
+	font-size: 14px;
 	display: flex;
 	align-items: center;
 	justify-content: space-between;

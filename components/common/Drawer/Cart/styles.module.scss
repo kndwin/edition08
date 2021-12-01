@@ -25,16 +25,17 @@
   height: 100%;
   padding: 1em;
   .titleWrapper {
+		width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: fit-content;
     h3 {
       margin: 0;
     }
     .close {
       cursor: pointer;
     }
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    height: fit-content;
   }
 
   .content {
@@ -55,7 +56,11 @@
         flex-direction: column;
         justify-content: flex-start;
         height: 100%;
-
+				.itemTitleWrapper {
+					display: flex;
+					align-items: center;
+					justify-content: space-between;
+				}
         .title {
           margin: 0;
         }

@@ -3,18 +3,24 @@ import { useRef } from "react";
 import { useOverlay, usePreventScroll, useModal } from "@react-aria/overlays";
 import { useDialog } from "@react-aria/dialog";
 import { FocusScope } from "@react-aria/focus";
-import Image from "next/image";
 
 import { useCartDrawer } from "hooks/components/useCartDrawer";
 import styles from "./styles.module.scss";
 import { useCart } from "hooks/shopify";
-import { NumberField } from "components/common/NumberField";
+import { NumberField, Button } from "components";
 
 export const CartModal = () => {
   const { setIsOpen } = useCartDrawer();
-  const { cart } = useCart();
+  const { cart, removeItemFromCart } = useCart();
 
-  console.log({ cart });
+  // console.log({ cart });
+  const changeItemQuanityHandler = (event: Event) => {
+    console.log(event);
+  };
+
+  const removeItem = async (merchandiseId: string) => {
+    await removeItemFromCart({ merchandiseId });
+  };
 
   return (
     <OverlayContainer>
@@ -33,25 +39,45 @@ export const CartModal = () => {
           </div>
           <div className={styles.content}>
             <div className={styles.cartItems}>
-              {cart?.items?.map(({ image, title, price, quantity }) => (
-                <div className={styles.itemWrapper}>
-                  <img src={image} className={styles.image} />
-                  <div className={styles.description}>
-                    <h4 className={styles.title}>{title}</h4>
-                    <div className={styles.priceAndQuantity}>
-                      <NumberField
-												className={styles.quantity}
-                        aria-label={`Quantity of ${title}`}
-                        value={quantity}
-                        onChange={(e) => console.log(e)}
-                      />
-                      <p>$ {price}</p>
+              {cart?.items?.map(
+                ({
+                  merchandiseId,
+                  productVariantId,
+                  image,
+                  title,
+                  price,
+                  quantity,
+                }) => (
+                  <div className={styles.itemWrapper}>
+                    <img src={image} className={styles.image} />
+                    <div className={styles.description}>
+                      <div className={styles.itemTitleWrapper}>
+                        <h4 className={styles.title}>{title}</h4>
+                        <div
+                          style={{ cursor: "pointer" }}
+                          onClick={() => removeItem(merchandiseId)}
+                        >
+                          ❌
+                        </div>
+                      </div>
+                      <div className={styles.priceAndQuantity}>
+                        <NumberField
+                          className={styles.quantity}
+                          aria-label={`Quantity of ${title}`}
+                          value={quantity}
+                          onChange={(e: Event) => changeItemQuanityHandler(e)}
+                        />
+                        <p>$ {price}</p>
+                      </div>
                     </div>
                   </div>
-                </div>
-              ))}
+                )
+              )}
             </div>
             <div className={styles.checkout}>{cart?.subtotal}</div>
+            <Button onClick={() => window.location.assign(cart?.checkoutUrl)}>
+              Checkout
+            </Button>
           </div>
         </div>
       </DrawerModal>
@@ -61,18 +87,10 @@ export const CartModal = () => {
 
 const DrawerModal = (props: any) => {
   let { title, children } = props;
-
-  // Handle interacting outside the dialog and pressing
-  // the Escape key to close the modal.
   let ref = useRef(null);
   let { overlayProps, underlayProps } = useOverlay(props, ref);
-
-  // Prevent scrolling while the modal is open, and hide content
-  // outside the modal from screen readers.
   usePreventScroll();
   let { modalProps } = useModal();
-
-  // Get props for the dialog and its title
   let { dialogProps, titleProps } = useDialog(props, ref);
 
   return (
