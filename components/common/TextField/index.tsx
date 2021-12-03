@@ -1,20 +1,20 @@
-import React, { useRef } from "react";
-import { useTextField } from "react-aria";
+import React, { useRef, InputHTMLAttributes } from "react";
+import {  useTextField, AriaTextFieldOptions } from "@react-aria/textfield";
 
 import styles from "./styles.module.scss";
 
 export function TextField(props: any) {
   let { label } = props;
   // @ts-ignore
-  let ref = useRef(null);
+	let ref = useRef<HTMLInputElement>(null);
   let { labelProps, inputProps, descriptionProps, errorMessageProps } =
-    useTextField(props, ref);
+		useTextField(props, ref);
   const { className } = props;
 
   return (
     <div className={`${styles.textfield}`}>
       {label && <label {...labelProps}>{label}</label>}
-      <input {...inputProps} ref={ref} className={className} />
+			<input {...(inputProps as InputHTMLAttributes<HTMLInputElement>)} ref={ref} className={className} />
       {props.description && (
         <div {...descriptionProps}>
           {props.description}

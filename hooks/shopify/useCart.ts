@@ -15,7 +15,7 @@ import { REMOVE_ITEM_FROM_CART } from "graphql/shopify/mutations/carts";
 export function useCart() {
   const { setItem, getItem } = useLocalStorage();
   const [cartId, setCartId] = useState(getItem({ key: "cartId" }));
-  const [cart, setCart] = useState<Cart>({ items: [], subtotal: "" });
+  const [cart, setCart] = useState<Cart>({ items: [], subtotal: "", checkoutUrl: "" });
   const [cartLength, setCartLength] = useState();
   const [createCartMutation] = useMutation(CREATE_CART, {
     onError: (error) => console.log(JSON.stringify(error, null, 2)),

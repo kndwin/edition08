@@ -8,7 +8,7 @@ export interface LandingPageProps {}
 export function LandingPage(props: LandingPageProps): ReactElement | null {
   return (
     <div className={styles.pageContainer}>
-      <div className={styles.leftImage}>
+      <div className={styles.furniture}>
         <img
           src="/page/Index/wall-with-furniture.png"
           alt="Wall with furniture"
@@ -22,7 +22,7 @@ export function LandingPage(props: LandingPageProps): ReactElement | null {
         <br />
         Beauty
       </h1>
-      <div className={styles.rightImage}>
+      <div className={styles.bottle}>
         <img src="/page/Index/nail-bottle-1.png" alt="Nail Bottle" />
         <p className={styles.newRelease}>New Release</p>
       </div>

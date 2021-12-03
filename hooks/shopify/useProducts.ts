@@ -37,6 +37,7 @@ export function useProducts() {
         ({ node }: any) => node.originalSrc
       ),
       id: res?.data?.product?.id,
+			merchandiseIds: [""]
     };
     return product;
   };

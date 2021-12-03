@@ -40,7 +40,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
     variables: { blogHandle: "store" },
   });
 
-  const article = res?.data?.blog?.articles?.edges
+	const article = res?.data?.blog?.articles?.edges
     ?.map(({ node }: any) => ({
       id: node?.id,
       handle: node?.handle,
