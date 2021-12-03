@@ -8,13 +8,19 @@
   background: rgba(0, 0, 0, 0.2);
   display: flex;
   align-items: center;
-  justify-content: flex-end;
+  justify-content: flex-start;
 
   .drawer {
     background: white;
-    padding: 1em;
-    height: calc(100% - 2em);
-    width: 20em;
-    margin: 1em;
+    height: 100%;
+    width: clamp(20em, 100%, 30em);
+
   }
+}
+
+.header {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  padding: 1em;
 }

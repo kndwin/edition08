@@ -4,16 +4,17 @@ import { Footer } from "./Footer";
 import { Header } from "./Header";
 import styles from "./styles.module.scss";
 
-import { useCartDrawer } from "hooks/components/useCartDrawer";
 import { CartModal } from "../Drawer/Cart";
+import { HeaderDropdown } from "../Drawer/Header";
+import { useLayout, useCartDrawer } from "hooks";
 
 export interface LayoutProps {
   children: React.ReactNode;
 }
 
 export const Layout = ({ children }: LayoutProps) => {
-
-	const { isOpen } = useCartDrawer();
+  const { isOpen } = useCartDrawer();
+  const { isHeaderDropdownOpen } = useLayout();
 
   return (
     <div className={styles.wrapper}>
@@ -26,6 +27,7 @@ export const Layout = ({ children }: LayoutProps) => {
       <main className={styles.main}>{children}</main>
       <Footer />
       {isOpen && <CartModal />}
+      {isHeaderDropdownOpen && <HeaderDropdown />}
     </div>
   );
 };

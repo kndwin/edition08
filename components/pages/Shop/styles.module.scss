@@ -67,9 +67,29 @@
     display: grid;
     grid-template-columns: 1fr 50%;
     place-items: center;
-    .row {
-      margin: 0.5em 0;
-      display: flex;
-    }
+		.description {
+			font-family: Folio;
+			display: grid;
+			grid-template-columns: 1fr 3fr;
+			margin: auto; 
+			width: clamp(10em, 100%, 35em); 
+			.header {
+				border-bottom: 1px solid black;
+				padding: 0.5em 0;
+
+			}
+			.content {
+				grid-column-start: 2; 
+				white-space: pre-line;
+			}
+			.row {
+				grid-column-start: 2; 
+				margin: 0.5em 0;
+				display: flex;
+			}
+			.price {
+				font-weight: bold;
+			}
+		}
   }
 }

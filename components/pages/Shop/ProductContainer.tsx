@@ -15,6 +15,7 @@ export function ProductContainer({ product }: any) {
       key: "product",
       value: product?.title,
     });
+		console.log({ cart })
   };
 
   return (
@@ -26,9 +27,16 @@ export function ProductContainer({ product }: any) {
           src={product?.images[0]}
           alt={`Close up of ${product?.title}`}
         />
-        <div>
-          <h1>{product?.title}</h1>
-          <div dangerouslySetInnerHTML={{ __html: product?.description }} />
+        <div className={styles.description}>
+          <p className={styles.header}>001. </p>
+          <p className={styles.header}>{product?.title}</p>
+          <div
+            className={styles.content}
+            dangerouslySetInnerHTML={{ __html: product?.description }}
+          />
+					<div className={styles.row}>
+						<p className={styles.price}>$35.00</p>
+					</div>
           <div className={styles.row}>
             <NumberField
               aria-label="Quantity"

@@ -3,12 +3,13 @@ import Link from "next/link";
 import styles from "./styles.module.scss";
 import { Searchbar } from "components";
 import { useCart } from "hooks/shopify";
-import { useCartDrawer, useBreakpoint } from "hooks";
+import { useCartDrawer, useBreakpoint, useLayout } from "hooks";
 import { DropdownButton } from "./DropdownButton";
 
 export const Header = () => {
   const { cartLength } = useCart();
   const { openCart } = useCartDrawer();
+	const { toggleHeaderDropdown } = useLayout()
 
 	const { sm } = useBreakpoint()
 
@@ -29,7 +30,7 @@ export const Header = () => {
 					<Searchbar />
         </div>
 				) : (
-					<DropdownButton />
+					<DropdownButton onPress={() => toggleHeaderDropdown()} />
 				)}
       </div>
 
