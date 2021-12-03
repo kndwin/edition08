@@ -1,0 +1,29 @@
+@import 'utils/variables';
+
+.aboutUsWrapper {
+	width: 100%;
+	height: 100%; 
+	min-height: $h-fullscreen; 
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	margin: auto; 
+	.description {
+		font-family: Folio;
+		margin: 10em; 
+		white-space: pre-wrap;
+		width: clamp(30ch, 100%, 50ch); 
+	}
+}
+
+@media (max-width: $bp-md) {
+	.aboutUsWrapper {
+		flex-direction: column;
+	justify-content: center;
+		padding: 0 2em;
+		.description {
+			margin: 3em 0 6em 0;
+			width: 100%;
+		}
+	}
+}

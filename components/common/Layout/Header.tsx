@@ -35,7 +35,7 @@ export const Header = () => {
 
       <div className={styles.centerOfNav}>
         <Link href="/">
-          <h1>Edition 08</h1>
+					<img className={styles.logo} src="/logo.svg" alt="Logo" />
         </Link>
       </div>
 

@@ -12,8 +12,11 @@ export const Article = ({ article }: ArticleProps) => {
   return (
     <div className={styles.articleWrapper}>
       <img className={styles.image} src={image} />
-      <h1>{title}</h1>
-      <div dangerouslySetInnerHTML={{ __html: content }} />
-    </div>
+			<div className={styles.grid}>
+				<p className={styles.number}>001</p>
+				<p className={styles.title}>{title}</p>
+				<div className={styles.content} dangerouslySetInnerHTML={{ __html: content }} />
+			</div>
+		</div>
   );
 };

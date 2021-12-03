@@ -1,17 +1,16 @@
 import { GetStaticProps, NextPage } from "next";
 
 import { Layout } from "components";
-import { ProductsGrid } from "components/pages/Shop";
 import { shopifyClient } from "graphql/client";
 import { GET_PRODUCTS } from "graphql/shopify";
+import { ShopContainer } from "components/pages/Shop";
 
 const ShopPage: NextPage = ({ products }: any) => {
-  return (
-    <Layout>
-      <h1>Shop</h1>
-      <ProductsGrid products={products} />
-    </Layout>
-  );
+	return (
+		<Layout>
+			<ShopContainer products={products} />
+		</Layout>
+	);
 };
 
 export default ShopPage;

@@ -24,15 +24,31 @@
 .articleWrapper {
 	width: clamp(45ch, 100%, 75ch);
 	margin: 0 auto;
+	.grid {
+		display: grid;
+		grid-template-columns: 10em 1fr;
+	}
+	.number,
+	.title {
+		font-family: Folio; 
+		font-size: 16px; 
+		font-weight: normal; 
+		padding-bottom: 1em;
+		border-bottom: 1px solid #000;
+	}
 	.image {
 		width: 100%;
 		height: 30em; 
 		object-fit: cover;
 	}
+	.content {
+		grid-column: 2;
+	}
 }
 
 .navigatorWrapper {
 	font-family: Folio;
+	padding: 0 1em; 
 	.readme {
 		font-weight: bold;
 		margin-bottom: 2em;
