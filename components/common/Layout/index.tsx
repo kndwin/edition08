@@ -7,6 +7,7 @@ import styles from "./styles.module.scss";
 import { CartModal } from "../Drawer/Cart";
 import { HeaderDropdown } from "../Drawer/Header";
 import { useLayout, useCartDrawer } from "hooks";
+import {useEffect} from "react";
 
 export interface LayoutProps {
   children: React.ReactNode;
@@ -14,7 +15,11 @@ export interface LayoutProps {
 
 export const Layout = ({ children }: LayoutProps) => {
   const { isOpen } = useCartDrawer();
-  const { isHeaderDropdownOpen } = useLayout();
+  const { isHeaderDropdownOpen, setHeaderDropdown } = useLayout();
+
+	useEffect(() => {
+		setHeaderDropdown({ isOpen: false})
+	}, [])
 
   return (
     <div className={styles.wrapper}>

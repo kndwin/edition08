@@ -10,14 +10,14 @@ export const Articles = ({ articles }: any) => {
         <Link href={`/journal/${id}`} key={id}>
           <div className={styles.article}>
             <img className={styles.image} src={image} />
-            <h3>
-              <span>
+            <p className={styles.heading}>
+              <span className={styles.number}>
                 {Number(index + 1)
                   .toString()
-                  .padStart(3, "0")}{" "}
+                  .padStart(3, "0")}{". "}
               </span>
               <span>{title}</span>
-            </h3>
+            </p>
           </div>
         </Link>
       ))}

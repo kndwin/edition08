@@ -12,7 +12,7 @@ export const Button = (props: any) => {
   return (
     <button
       ref={ref}
-      className={`${styles.button} ${className}`}
+      className={`${className} ${styles.button}`}
       {...buttonProps}
     >
       {children}

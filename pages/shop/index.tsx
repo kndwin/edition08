@@ -17,6 +17,7 @@ export default ShopPage;
 
 export const getStaticProps: GetStaticProps = async (context) => {
   const res = await shopifyClient.query({ query: GET_PRODUCTS });
+	console.dir(res, { depth: null })
 	const products = res?.data?.products?.edges?.map(({ node }: any) => ({
     id: node?.id,
     title: node?.title,

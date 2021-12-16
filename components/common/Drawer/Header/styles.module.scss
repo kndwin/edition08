@@ -5,22 +5,30 @@
   left: 0;
   bottom: 0;
   right: 0;
-  background: rgba(0, 0, 0, 0.2);
   display: flex;
-  align-items: center;
+  align-items: flex-end;
   justify-content: flex-start;
+	background-color: rgba(0, 0, 0, 0.2);
 
   .drawer {
     background: white;
-    height: 100%;
-    width: clamp(20em, 100%, 30em);
+    height: calc(100%);
+    width: clamp(15em, 100%, 20em);
 
   }
 }
 
 .header {
   display: flex;
+	z-index: 1000; 
   flex-direction: column;
   height: 100%;
-  padding: 1em;
+  padding: 3em 1em 1em 1em;
+	.label {
+		cursor: pointer; 
+		font-family: Folio;
+		font-size: 14px;
+		font-weight: 300;
+		margin: .5em 0; 
+	}
 }

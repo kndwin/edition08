@@ -15,19 +15,19 @@ export function Sidebar(props: SidebarProps): ReactElement | null {
 			<div className={styles.options}>
 				<p className={styles.title}>Category</p>
 				{categories.map(category => (
-					<p className={styles.item}>{category}</p>
+					<p key={category} className={styles.item}>{category}</p>
 				))}
 			</div>
 			<div className={styles.options}>
 				<p className={styles.title}>Nail Polish</p>
 				{nails.map(nail => (
-					<p className={styles.item}>{nail}</p>
+					<p key={nail} className={styles.item}>{nail}</p>
 				))}
 			</div>
 			<div className={styles.options}>
 				<p className={styles.title}>Sort</p>
 				{sort.map(sortOption => (
-					<p className={styles.item}>{sortOption}</p>
+					<p key={sortOption} className={styles.item}>{sortOption}</p>
 				))}
 			</div>
 		</div>

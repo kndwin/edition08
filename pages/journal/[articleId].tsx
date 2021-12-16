@@ -6,15 +6,13 @@ import { GET_ARTICLES } from "graphql/shopify";
 import styles from "./styles.module.scss";
 import { Layout } from "components";
 import { Article, Navigator } from "components/pages/Journal";
+import {ArticleContainer} from "components/pages/Journal/JournalContainer";
 
 const ArticleIdPage: NextPage = ({ article }: any) => {
 
   return (
     <Layout>
-      <div className={styles.journalWrapper}>
-				<Navigator />
-        <Article article={article} />
-      </div>
+			<ArticleContainer article={article}  />
     </Layout>
   );
 };

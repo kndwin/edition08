@@ -4,22 +4,20 @@ import { GetStaticProps, NextPage } from "next";
 import { shopifyClient } from "graphql/client";
 import { GET_ARTICLES } from "graphql/shopify";
 
-import styles from "./styles.module.scss";
 import { Layout } from "components";
 import { useArticles } from "hooks";
-import { Articles, Navigator } from "components/pages/Journal";
+import { ArticlesContainer } from "components/pages/Journal/JournalContainer";
 
 const JournalPage: NextPage = ({ articles }: any) => {
   const { setArticles } = useArticles();
+
   useEffect(() => {
     setArticles(articles);
   }, [articles]);
+
   return (
     <Layout>
-      <div className={styles.journalWrapper}>
-        <Navigator />
-        <Articles articles={articles} />
-      </div>
+      <ArticlesContainer articles={articles} />
     </Layout>
   );
 };

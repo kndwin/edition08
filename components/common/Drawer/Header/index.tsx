@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { OverlayContainer } from "@react-aria/overlays";
 import { useRef } from "react";
 import { useOverlay, usePreventScroll, useModal } from "@react-aria/overlays";
@@ -8,13 +9,25 @@ import styles from "./styles.module.scss";
 import { useLayout } from "hooks";
 
 export const HeaderDropdown = () => {
-  const { setHeaderDropdown } = useLayout();
+  const options = [
+    { label: "About", href: "/about" },
+    { label: "Shop", href: "/shop" },
+    { label: "Journal", href: "/journal" },
+  ];
   return (
     <OverlayContainer>
       <DrawerModal isOpen isDismissable>
-        <div className={styles.header}>
-					<div onClick={() => setHeaderDropdown(false)}>❌</div>
-          Header dropdown
+        <div
+          onMouseDown={(e: any) => {
+            e.stopPropagation();
+          }}
+          className={styles.header}
+        >
+          {options?.map(({ label, href }) => (
+            <Link href={href}>
+              <p className={styles.label}>{label}</p>
+            </Link>
+          ))}
         </div>
       </DrawerModal>
     </OverlayContainer>
@@ -24,13 +37,20 @@ export const HeaderDropdown = () => {
 const DrawerModal = (props: any) => {
   let { title, children } = props;
   let ref = useRef(null);
+  const { setHeaderDropdown } = useLayout();
   let { overlayProps, underlayProps } = useOverlay(props, ref);
   usePreventScroll();
   let { modalProps } = useModal();
   let { dialogProps, titleProps } = useDialog(props, ref);
 
   return (
-    <div className={styles.drawerOverlay} {...underlayProps}>
+    <div
+      {...underlayProps}
+      className={styles.drawerOverlay}
+      onMouseDown={() => {
+        setHeaderDropdown({ isOpen: false });
+      }}
+    >
       <FocusScope contain restoreFocus autoFocus>
         <div
           {...overlayProps}

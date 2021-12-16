@@ -99,7 +99,7 @@ export function useCart() {
       });
       const subtotal: any = cartData?.cart?.estimatedCost?.subtotalAmount;
       const cartToSet = {
-        subtotal: `${subtotal?.currencyCode} $${subtotal?.amount}`,
+        subtotal: `${subtotal?.currencyCode} $${Number(subtotal?.amount).toFixed(2)}`,
         items,
 				checkoutUrl: cartData?.cart?.checkoutUrl,
       };

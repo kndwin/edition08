@@ -18,10 +18,11 @@ export function useProducts() {
         description: node?.descriptionHtml,
         images: node?.images?.edges?.map(({ node }: any) => node?.originalSrc),
       }));
-      setProducts([...productsToSet]);
-    },
-    onError: (error) => console.log(JSON.stringify(error, null, 2)),
-  });
+				console.log({ productsToSet })
+				setProducts([...productsToSet]);
+		},
+		onError: (error) => console.log(JSON.stringify(error, null, 2)),
+	});
 
   // TODO(kndwin): Figure out pagination with hooks
 

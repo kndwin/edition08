@@ -39,7 +39,8 @@ export function ProductContainer({ product }: any) {
 					</div>
           <div className={styles.row}>
             <NumberField
-              aria-label="Quantity"
+							id="quantity"
+              aria-label="quantity"
               value={quantity}
               onChange={setQuantity}
             />

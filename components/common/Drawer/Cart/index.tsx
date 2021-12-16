@@ -37,6 +37,7 @@ export const CartModal = () => {
               ❌
             </div>
           </div>
+					<p className={styles.title}>Your Shopping Bag</p>
           <div className={styles.content}>
             <div className={styles.cartItems}>
               {cart?.items?.map(
@@ -57,7 +58,7 @@ export const CartModal = () => {
                           style={{ cursor: "pointer" }}
                           onClick={() => removeItem(merchandiseId)}
                         >
-                          ❌
+													Remove
                         </div>
                       </div>
                       <div className={styles.priceAndQuantity}>
@@ -74,10 +75,21 @@ export const CartModal = () => {
                 )
               )}
             </div>
-            <div className={styles.checkout}>{cart?.subtotal}</div>
-            <Button onClick={() => window.location.assign(cart?.checkoutUrl)}>
-              Checkout
-            </Button>
+            <div className={styles.bottomOfDrawer}>
+              <div className={styles.subtotal}>
+                <label className={styles.label}>SUBTOTAL</label>
+                <p className={styles.amount}>{cart?.subtotal}</p>
+              </div>
+              <Button
+                className={styles.checkoutButton}
+                onClick={() => window.location.assign(cart?.checkoutUrl)}
+              >
+                Proceed to Checkout
+              </Button>
+							<p className={styles.continue}>
+								Continue shopping
+							</p>
+            </div>
           </div>
         </div>
       </DrawerModal>
