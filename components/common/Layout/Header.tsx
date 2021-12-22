@@ -5,6 +5,7 @@ import { Searchbar } from "components";
 import { useCart } from "hooks/shopify";
 import { useCartDrawer, useBreakpoint, useLayout } from "hooks";
 import { DropdownButton } from "./DropdownButton";
+import { useEffect } from "react";
 
 export const Header = () => {
   const { cartLength } = useCart();
@@ -20,6 +21,11 @@ export const Header = () => {
       <rect y="20" width="25" height="3" />
     </svg>
   );
+
+  useEffect(() => {
+		console.log("header")
+    console.log({ cartLength });
+  }, [cartLength]);
 
   return (
     <nav className={styles.header}>
@@ -53,7 +59,7 @@ export const Header = () => {
 
       <div className={styles.rightOfNav}>
         <p className={styles.cartLink} onMouseDown={() => openCart()}>
-          Shopping Bag ({cartLength})
+          Shopping Bag {cartLength ?? 0 > 0 ? <>({cartLength})</> : ""}
         </p>
       </div>
     </nav>

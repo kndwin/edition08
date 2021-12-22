@@ -12,12 +12,15 @@
 
   .drawer {
     background: white;
-    padding: 1em;
+    padding: 1em 2em;
     height: 100%;
-    width: 20em;
+    width: 30em;
 		display: flex;
 		flex-direction: column;
 		.close {
+			cursor: pointer; 
+			height: 2em;
+			width: 2em; 
 			position: absolute;
 			right: 2em;
 			top: 2em;
@@ -37,11 +40,23 @@
       }
 			.cartItems {
 				.itemWrapper {
-					.image {
-						height: 5em; 
-					}
 					display: flex;
+					width: 100%;
+					align-items: flex-start;
+					justify-content: space-between;
 					border-bottom: 1px solid #e6e6e6;
+					padding: 2em 0; 
+					.title {
+						font-weight: normal; 
+						margin: 0; 
+					}
+					.image {
+						height: 6em; 
+						margin: 0 3em; 
+					}
+					.remove {
+						cursor: pointer; 
+					}
 				}
 			}
     }

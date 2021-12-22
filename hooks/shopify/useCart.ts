@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useMutation, useQuery } from "@apollo/client";
+import { makeVar, useMutation, useQuery, useReactiveVar } from "@apollo/client";
 
 import type { Cart } from "types";
 
@@ -12,11 +12,17 @@ import {
 import { useLocalStorage } from "hooks";
 import { REMOVE_ITEM_FROM_CART } from "graphql/shopify/mutations/carts";
 
+const cartLengthVar = makeVar({ cartLength: 0})
+
 export function useCart() {
   const { setItem, getItem } = useLocalStorage();
   const [cartId, setCartId] = useState(getItem({ key: "cartId" }));
-  const [cart, setCart] = useState<Cart>({ items: [], subtotal: "", checkoutUrl: "" });
-  const [cartLength, setCartLength] = useState();
+	const { cartLength } = useReactiveVar(cartLengthVar)
+  const [cart, setCart] = useState<Cart>({
+    items: [],
+    subtotal: "",
+    checkoutUrl: "",
+  });
   const [createCartMutation] = useMutation(CREATE_CART, {
     onError: (error) => console.log(JSON.stringify(error, null, 2)),
     refetchQueries: [
@@ -70,7 +76,6 @@ export function useCart() {
         },
       });
       console.log({ updatedCart });
-      // Call cartUpdate mutation
     }
   };
 
@@ -89,7 +94,7 @@ export function useCart() {
       const items = cartData?.cart?.lines?.edges?.map(({ node }: any) => {
         const merchandise = node?.merchandise;
         return {
-          merchandiseId: node?.id, // so confusing lol
+          merchandiseId: node?.id,
           productVariantId: merchandise?.id,
           image: merchandise?.image?.originalSrc,
           title: merchandise?.title,
@@ -99,14 +104,25 @@ export function useCart() {
       });
       const subtotal: any = cartData?.cart?.estimatedCost?.subtotalAmount;
       const cartToSet = {
-        subtotal: `${subtotal?.currencyCode} $${Number(subtotal?.amount).toFixed(2)}`,
+        subtotal: `${subtotal?.currencyCode} $${Number(
+          subtotal?.amount
+        ).toFixed(2)}`,
         items,
-				checkoutUrl: cartData?.cart?.checkoutUrl,
+        checkoutUrl: cartData?.cart?.checkoutUrl,
       };
+			console.log({ items })
+			if (!!items) { 
+				console.log(`length: ${items.length}`)
+				cartLengthVar({ cartLength: items?.length})
+			}
       setCart({ ...cartToSet });
-      setCartLength(items?.length);
     }
   }, [cartData, cartIdData, cartId]);
+
+	useEffect(() => {
+		console.log("useCart")
+		console.log({ cartLength })
+	}, [cartLength])
 
   const [removeItemFromCartMutation, { loading: removeItemFromCartLoading }] =
     useMutation(REMOVE_ITEM_FROM_CART, {
@@ -126,7 +142,7 @@ export function useCart() {
     const removedItem = await removeItemFromCartMutation({
       variables: { cartId, lineIds },
     });
-		console.log({ removedItem })
+    console.log({ removedItem });
   };
 
   return {

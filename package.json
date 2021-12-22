@@ -14,6 +14,7 @@
     "@shopify/shopify-api": "^1.4.3",
     "apollo3-cache-persist": "^0.13.0",
     "graphql": "^15.6.1",
+    "lodash.clonedeep": "^4.5.0",
     "next": "^12.0.1",
     "react": "17.0.2",
     "react-aria": "^3.10.0",
@@ -24,6 +25,7 @@
     "shopify-buy": "^2.13.0"
   },
   "devDependencies": {
+    "@svgr/webpack": "^6.1.2",
     "@types/react": "17.0.31",
     "@types/shopify-buy": "^2.10.8",
     "eslint": "8.0.1",

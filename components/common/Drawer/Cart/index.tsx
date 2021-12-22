@@ -4,19 +4,16 @@ import { useOverlay, usePreventScroll, useModal } from "@react-aria/overlays";
 import { useDialog } from "@react-aria/dialog";
 import { FocusScope } from "@react-aria/focus";
 
+import Cross from "public/cross.svg";
+
 import { useCartDrawer } from "hooks/components/useCartDrawer";
 import styles from "./styles.module.scss";
 import { useCart } from "hooks/shopify";
-import { NumberField, Button } from "components";
+import { Button } from "components";
 
 export const CartModal = () => {
   const { setIsOpen } = useCartDrawer();
   const { cart, removeItemFromCart } = useCart();
-
-  // console.log({ cart });
-  const changeItemQuanityHandler = (event: Event) => {
-    console.log(event);
-  };
 
   const removeItem = async (merchandiseId: string) => {
     await removeItemFromCart({ merchandiseId });
@@ -33,11 +30,9 @@ export const CartModal = () => {
         <div className={styles.cart}>
           <div className={styles.titleWrapper}>
             <h3>Cart</h3>
-            <div className={styles.close} onClick={() => setIsOpen(false)}>
-              ❌
-            </div>
+            <Cross className={styles.close} onClick={() => setIsOpen(false)} />
           </div>
-					<p className={styles.title}>Your Shopping Bag</p>
+          <p className={styles.title}>Your Shopping Bag</p>
           <div className={styles.content}>
             <div className={styles.cartItems}>
               {cart?.items?.map(
@@ -54,22 +49,15 @@ export const CartModal = () => {
                     <div className={styles.description}>
                       <div className={styles.itemTitleWrapper}>
                         <h4 className={styles.title}>{title}</h4>
-                        <div
-                          style={{ cursor: "pointer" }}
-                          onClick={() => removeItem(merchandiseId)}
-                        >
-													Remove
-                        </div>
-                      </div>
-                      <div className={styles.priceAndQuantity}>
-                        <NumberField
-                          className={styles.quantity}
-                          aria-label={`Quantity of ${title}`}
-                          value={quantity}
-                          onChange={(e: Event) => changeItemQuanityHandler(e)}
-                        />
+                        <p>Qty. {quantity}</p>
                         <p>$ {price}</p>
                       </div>
+                    </div>
+                    <div
+                      className={styles.remove}
+                      onClick={() => removeItem(merchandiseId)}
+                    >
+                      Remove
                     </div>
                   </div>
                 )
@@ -78,7 +66,9 @@ export const CartModal = () => {
             <div className={styles.bottomOfDrawer}>
               <div className={styles.subtotal}>
                 <label className={styles.label}>SUBTOTAL</label>
-                <p className={styles.amount}>{cart?.subtotal}</p>
+								{!!cart?.subtotal && (
+									<p className={styles.amount}>{cart?.subtotal}</p>
+								)}
               </div>
               <Button
                 className={styles.checkoutButton}
@@ -86,9 +76,7 @@ export const CartModal = () => {
               >
                 Proceed to Checkout
               </Button>
-							<p className={styles.continue}>
-								Continue shopping
-							</p>
+              <p className={styles.continue}>Continue shopping</p>
             </div>
           </div>
         </div>
