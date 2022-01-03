@@ -4,5 +4,31 @@ $bp-md: 960px;
 $bp-lg: 1280px;
 $bp-xl: 1440px;
 
+// Responsive width
+@mixin sm {
+  @media (max-width: #{$bp-sm}) {
+    @content;
+  }
+}
+
+
+@mixin md {
+  @media (max-width: #{$bp-md}) {
+    @content;
+  }
+}
+
+@mixin lg {
+  @media (max-width: #{$bp-lg}) {
+    @content;
+  }
+}
+
+@mixin xl {
+  @media (max-width: #{$bp-xl}) {
+    @content;
+  }
+}
+
 // Layout
 $h-fullscreen: calc(100vh - 8em);

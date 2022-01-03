@@ -1,12 +1,15 @@
 import { useState } from "react";
+
 import styles from "./styles.module.scss";
 import { Button, NumberField } from "components";
+import { useBreakpoint } from "hooks";
 import { useCart } from "hooks/shopify";
 import { Sidebar } from "./Sidebar";
 
 export function ProductContainer({ product }: any) {
   const [quantity, setQuantity] = useState(1);
   const { addItemToCart } = useCart();
+  const { sm } = useBreakpoint();
 
   const handleAddItemToCart = async () => {
     const cart = await addItemToCart({
@@ -15,12 +18,12 @@ export function ProductContainer({ product }: any) {
       key: "product",
       value: product?.title,
     });
-		console.log({ cart })
+    console.log({ cart });
   };
 
   return (
     <div className={styles.productContainer}>
-      <Sidebar />
+			{!sm && <Sidebar />}
       <div className={styles.grid}>
         <img
           className={styles.image}
@@ -34,12 +37,12 @@ export function ProductContainer({ product }: any) {
             className={styles.content}
             dangerouslySetInnerHTML={{ __html: product?.description }}
           />
-					<div className={styles.row}>
-						<p className={styles.price}>$35.00</p>
-					</div>
+          <div className={styles.row}>
+            <p className={styles.price}>$35.00</p>
+          </div>
           <div className={styles.row}>
             <NumberField
-							id="quantity"
+              id="quantity"
               aria-label="quantity"
               value={quantity}
               onChange={setQuantity}

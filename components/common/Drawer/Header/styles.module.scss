@@ -8,27 +8,37 @@
   display: flex;
   align-items: flex-end;
   justify-content: flex-start;
-	background-color: rgba(0, 0, 0, 0.2);
+  background-color: rgba(0, 0, 0, 0.2);
 
   .drawer {
     background: white;
     height: calc(100%);
     width: clamp(15em, 100%, 20em);
-
   }
 }
 
 .header {
   display: flex;
-	z-index: 1000; 
+  z-index: 1000;
   flex-direction: column;
   height: 100%;
   padding: 3em 1em 1em 1em;
-	.label {
-		cursor: pointer; 
-		font-family: Folio;
-		font-size: 14px;
-		font-weight: 300;
-		margin: .5em 0; 
-	}
+  .link {
+		cursor: pointer;
+    display: flex;
+		align-items: center;
+		justify-content: space-between;
+    .label {
+      cursor: pointer;
+      font-family: Folio;
+      font-size: 14px;
+      font-weight: 300;
+      margin: 0.5em 0;
+    }
+    .line {
+      width: 15px;
+      height: 2px;
+      background-color: black;
+    }
+  }
 }

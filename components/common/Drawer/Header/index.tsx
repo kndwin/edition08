@@ -24,9 +24,12 @@ export const HeaderDropdown = () => {
           className={styles.header}
         >
           {options?.map(({ label, href }) => (
-            <Link href={href}>
-              <p className={styles.label}>{label}</p>
-            </Link>
+						<div className={styles.link}>
+							<Link href={href}>
+								<p className={styles.label}>{label}</p>
+							</Link>
+							<span className={styles.line} />
+						</div>
           ))}
         </div>
       </DrawerModal>
